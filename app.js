@@ -1,34 +1,31 @@
-// function sumNumbers(numbers) {
-//     return numbers[0] + numbers[1] + numbers[2]; //0(1)
+// function isPowerOfTwo(number) {
+//   if (number < 1) {
+//     return false;
+//   }
+//   let dividedNumber = number;
+//   while (dividedNumber !== 1) {
+//     if (dividedNumber % 2 !== 0) {
+//       return false;
+//     }
+//     dividedNumber = dividedNumber / 2;
+//   }
+//   return true;
 // }
 
-// numbers = [ 1, 3, 10, 15]
+// Best Case: number = 13 => O(1)
+// Average Case: O(log n)
+// Worst Case: 1,000,000 => O(log n)
 
-function sumNumbers(numbers) {
-    let sum = 0;
-    for( let i = 0; i <= numbers.length; i++) {
-        sum += numbers[i];
+function isPowerOfTwo(number) {
+    if (number < 1) {
+      return false;
     }
-    return sum
-    
-}
-
-console.log(sumNumbers([1, 3, 10]));
-
-
-
-function sumNumber(numbers) {
-    let sum = 0; //1
-    for( let value of numbers) {
-        console.log('...'); //4
-        sum = sum + value; //4 => n
-    }
-    return sum; // 1
-    //return numbers.reduce((sum, curNum) => sum + curNum, 0);
-}
-
-// T = 1 + 1 + 1 + n = n = 3n + 2n = 3 + 2*n
-// T = 2*n
-// T = n => 0(n) => Linar Time Complexity
-
-console.log(sumNumber([1, 3, 10, 50]));
+  
+    return (number & (number - 1)) === 0; // O(1)
+  }
+  
+  console.log(isPowerOfTwo(8));
+  console.log(isPowerOfTwo(5));
+  console.log(isPowerOfTwo(20));
+  console.log(isPowerOfTwo(16));
+  console.log(isPowerOfTwo(13));
