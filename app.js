@@ -1,31 +1,40 @@
-// function isPowerOfTwo(number) {
-//   if (number < 1) {
-//     return false;
-//   }
-//   let dividedNumber = number;
-//   while (dividedNumber !== 1) {
-//     if (dividedNumber % 2 !== 0) {
-//       return false;
-//     }
-//     dividedNumber = dividedNumber / 2;
-//   }
-//   return true;
-// }
+let counte = 0;
+function fibon(n, memo) {
+  counte++;
 
-// Best Case: number = 13 => O(1)
-// Average Case: O(log n)
-// Worst Case: 1,000,000 => O(log n)
+  let result;
 
-function isPowerOfTwo(number) {
-    if (number < 1) {
-      return false;
-    }
-  
-    return (number & (number - 1)) === 0; // O(1)
+  if (memo[n]) {
+    return memo[n];
   }
-  
-  console.log(isPowerOfTwo(8));
-  console.log(isPowerOfTwo(5));
-  console.log(isPowerOfTwo(20));
-  console.log(isPowerOfTwo(16));
-  console.log(isPowerOfTwo(13));
+  //[1, 1, 2, 3, 5, 8 ]
+  if (n == 0 || n == 1) {
+    result = 1;
+  } else {
+    result = fibon(n - 1, memo) + fibon(n - 2, memo);
+  }
+  memo[n] = result;
+  return result;
+}
+
+const memo = {};
+fibon(5, memo);
+console.log('Count ', counte);
+console.log('memo ', memo);
+counte = 0;
+
+fibon(6, memo);
+console.log('Count ', counte);
+console.log('memo ', memo);
+counte = 0;
+
+fibon(20, {});
+console.log('Count ', counte);
+counte = 0;
+
+fibon(30, {});
+console.log('Count ', counte);
+counte = 0;
+
+
+//    0(n)
