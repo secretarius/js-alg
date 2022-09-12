@@ -1,40 +1,33 @@
-let counte = 0;
-function fibon(n, memo) {
-  counte++;
-
-  let result;
-
-  if (memo[n]) {
-    return memo[n];
+function findElement(arr, element, comparatorFn) {
+    let index = 0;
+    for (const item of arr) {
+      if (
+        typeof element === 'object' &&
+        element !== null &&
+        comparatorFn(element, item)
+      ) {
+        return index;
+      }
+      if (item === element) {
+        return index;
+      }
+      index++;
+    }
   }
-  //[1, 1, 2, 3, 5, 8 ]
-  if (n == 0 || n == 1) {
-    result = 1;
-  } else {
-    result = fibon(n - 1, memo) + fibon(n - 2, memo);
-  }
-  memo[n] = result;
-  return result;
-}
-
-const memo = {};
-fibon(5, memo);
-console.log('Count ', counte);
-console.log('memo ', memo);
-counte = 0;
-
-fibon(6, memo);
-console.log('Count ', counte);
-console.log('memo ', memo);
-counte = 0;
-
-fibon(20, {});
-console.log('Count ', counte);
-counte = 0;
-
-fibon(30, {});
-console.log('Count ', counte);
-counte = 0;
-
-
-//    0(n)
+  
+  const arr = [5, 3, 10, -10, 33, 51];
+  
+  //console.log(findElement(arr, 10)); for numbers
+  //console.log(findElement(arr, 33)); 
+  
+  const objects = [
+    { name: 'Max', age: 31 },
+    { name: 'Manu', age: 32 },
+  ];
+  
+  console.log(
+    findElement(objects, { name: 'Manu', age: 32 }, function (el, it) {
+      return el.name === it.name;
+    })
+  );
+  
