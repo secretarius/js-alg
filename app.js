@@ -1,49 +1,34 @@
-
-// function findBinaryEl(sortedArray, element) {
-//     let startIndex = 0;
-//     let endIndex = sortedArray.length - 1;
-
-//     while(startIndex <= endIndex) {
-//         console.log('RUNNING');
-        
-
-//     const middleIndex = Math.floor((endIndex - startIndex) / 2);
-
-//     if(element === sortedArray[middleIndex]) {
-//         return middleIndex;
-//     }
-
-//     if(sortedArray[middleIndex] < element) {
-//         startIndex = middleIndex + 1;
-//     } else {
-//         endIndex = middleIndex - 1;
-//     }
-// }
-// }
-
-// const array = [1, 5, 9, 13, 99, 100]
-
-// console.log(findBinaryEl(array, 99));
-
-function findEl(sortedArr, element) {
-    let startIndex = 0;
-    let endIndex = sortedArr.length - 1;
+function sort(arr) {
+    const resultArray = [...arr];
   
-    while (startIndex <= endIndex) {
-      const middleIndex = startIndex + Math.floor((endIndex - startIndex) / 2);
+    for (let outer = 0; outer < resultArray.length; outer++) {
+      let outerEl = resultArray[outer];
+      console.log('OUTER LOOP');
+      console.log(outerEl);
   
-      if (element === sortedArr[middleIndex]) {
-        return middleIndex;
-      }
+      for (let inner = outer + 1; inner < resultArray.length; inner++) {
+        let innerEl = resultArray[inner];
+        console.log('INNER LOOP');
+        console.log('outerEl: ' + outerEl);
+        console.log('innerEl: ' + innerEl);
   
-      if (sortedArr[middleIndex] < element) {
-        startIndex = middleIndex + 1;
-      } else {
-        endIndex = middleIndex - 1;
+        if (outerEl > innerEl) {
+          resultArray[outer] = innerEl;
+          resultArray[inner] = outerEl;
+  
+          outerEl = resultArray[outer];
+          innerEl = resultArray[inner];
+          console.log('INSIDE IF');
+          console.log(resultArray);
+        }
+        console.log('END OF INNER LOOP');
+        console.log(resultArray);
       }
     }
+  
+    return resultArray;
   }
   
-  const arra = [1, 5, 9, 13, 99, 100];
-  
-  console.log(findEl(arra, 99));
+  // const sortedArray = sort([5, 10, -3, -10, 1, 100, 99]);
+  const sortedArray = sort([3, 2, 1]);
+  console.log(sortedArray);
