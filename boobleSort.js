@@ -1,4 +1,4 @@
-function sort(arr) {
+function boobleSort(arr) {
     const resultArray = [...arr];
   
     for (let outer = 0; outer < resultArray.length; outer++) {
@@ -30,5 +30,5 @@ function sort(arr) {
   }
   
   // const sortedArray = sort([5, 10, -3, -10, 1, 100, 99]);
-  const sortedArray = sort([3, 2, 1]);
-  console.log(sortedArray);
+  const sortedArr = boobleSort([3, 2, 1]);
+  console.log(sortedArr);
