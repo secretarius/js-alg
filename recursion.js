@@ -1,4 +1,4 @@
-function fact(number) {
+function facto(number) {
     let result = 1;
     for (let index = 2; index <= number; index++) {
         result = result * index
@@ -6,9 +6,9 @@ function fact(number) {
     return result;
 }
 
-console.log(fact(3));
-console.log(fact(4));
-console.log(fact(5));
+console.log(facto(3));
+console.log(facto(4));
+console.log(facto(5));
 
 
 // O(n)
